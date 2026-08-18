@@ -114,8 +114,9 @@ console.log(horario+" horas tem "+horamin+" minutos e "+horaseg+" segundos")
 
 let moto = 89.99
 let motinha = 12.99
+let motona = motinha // correçao
 motinha = moto
-moto = motinha
+moto = motona
 
 console.log("O preço de motinha é "+motinha+" e de moto é "+moto)
 
