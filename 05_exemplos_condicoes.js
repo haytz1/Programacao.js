@@ -13,4 +13,6 @@ if ( idade > 99 ){
     console.log("Idade invalida")
 }
 
-console.log("")
+if( idade <= 0){
+    console.log("Idade invalida")
+}
