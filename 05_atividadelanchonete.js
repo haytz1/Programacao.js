@@ -9,8 +9,8 @@ let salsicha = parseFloat(prompt("Digite o preço da salsicha: R$"))
 let pure = parseFloat(prompt("Digite o preço do pure de batata: R$"))
 let queijo = parseFloat(prompt("Digite o preço do queijo: R$"))
 let bacon = parseFloat(prompt("Digite o preço do bacon: R$"))
-let lucro = parseInt(prompt("Digite a porcentagem do lucro desejado: "))
-lucro = lucro / 100
+let lucro_desejado = parseInt(prompt("Digite a porcentagem do lucro desejado: "))
+let lucro = lucro_desejado / 100
 
 let cachorroquentepure = pao + pure + bacon + salsicha
 let cachorroquentepurelucro = cachorroquentepure * lucro
@@ -45,7 +45,7 @@ console.log("-----------------------------")
 console.log("Cardapio De Carrapato dogs")
 console.log("-----------------------------")
 
-console.log("Lucro Aplicado: "+lucro+" %")
+console.log("Lucro Aplicado: "+lucro_desejado+" %")
 
 console.log("CACHORRO QUENTE COM PURE")
 console.log("Ingredientes : "+cachorro_pure)
