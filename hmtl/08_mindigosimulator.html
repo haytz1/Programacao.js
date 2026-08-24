@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mingigos</title>
+</head>
+<body>
+    
+    <h1>Mindigos esfomeados</h1>
+    <p>Voce tem 🤮<strong id="textodinheiro" >0</strong> lixo</p>
+
+    <img onclick="venderLixo()" src="https://pbs.twimg.com/media/Gj7ZqcbXAAA3ecv.jpg" style="height: 250px; cursor: pointer; "  />
+
+    <ul>
+        <li>Caçamba de lixo - <strong id="textocacamba" >25</strong> <button onclick="cacambaLixo()" >Comprar 🤮 </button> </li>
+        <li>Caminhao de lixo - <strong id="textocaminhao" >1000</strong> <button onclick="caminhaoLixo()" >Comprar 🤮 </button></li>
+        <li>jatinho de lixo - <strong id="textojatinho">50000</strong><button onclick="jatinhoLixo()" >Comprar 🤮 </button></li>
+    </ul>
+
+
+    <script>
+
+        let dinheiro = 0
+        let dinheiroPorClique = 1000
+        let cacambapreco = 25
+        let caminhaopreco = 1000
+        let jatinhopreco = 50000
+
+        function venderLixo(){
+            dinheiro += dinheiroPorClique
+            document.getElementById("textodinheiro").innerHTML = dinheiro
+        }
+
+        function cacambaLixo (){
+
+            if (dinheiro < cacambapreco ){
+                alert("Dinheiro insuficiente sai daqui mindigo")
+            } else {
+                dinheiroPorClique += 1
+                dinheiro -= cacambapreco
+                document.getElementById("textodinheiro").innerHTML = dinheiro
+                cacambapreco += parseInt(cacambapreco * 0.2)
+                document.getElementById("textocacamba").innerHTML = cacambapreco
+            }
+        }
+
+        function caminhaoLixo (){
+
+             if (dinheiro < caminhaopreco ){
+                alert("Dinheiro insuficiente sai daqui mindigo")
+            } else {
+                dinheiroPorClique += 10
+                dinheiro -= caminhaopreco
+                document.getElementById("textodinheiro").innerHTML = dinheiro
+                caminhaopreco += parseInt(caminhaopreco * 0.2)
+                document.getElementById("textocaminhao").innerHTML = caminhaopreco
+            }
+        }
+
+        function jatinhoLixo (){
+
+            if (dinheiro < jatinhopreco ){
+                alert("Dinheiro insuficiente sai daqui mindigo")
+            } else {
+                dinheiroPorClique += 100
+                dinheiro -= jatinhopreco
+                document.getElementById("textodinheiro").innerHTML = dinheiro
+                jatinhopreco += parseInt(jatinhopreco * 0.2)
+                document.getElementById("textojatinho").innerHTML = jatinhopreco
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>

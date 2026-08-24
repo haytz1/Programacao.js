@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Html com script</title>
+</head>
+<body style="text-align: center;background-color: red;color: white;  " >
+    
+    <h1>hmtl com virus </h1>
+    <p>desaplicando o javascript</p>
+    <button onclick="mostrarMensagem()" >Desinstalar</button>
+
+
+    <br/>
+    <hr/>
+    <br/>
+    <p>Clique no botao</p>
+    <button onclick="contaClick()" >Clica aqui man</button>
+
+    
+
+    <script>
+        let clicks = 0
+        let dinheiro = 0
+
+        function mostrarMensagem (){
+            console.log("Hello,World")
+            console.log("Misturando html com js")
+            let resposta = prompt("Oi todo bem")
+
+            if (resposta == "nao" ){
+                alert("beba uma que melhora man ")
+            } else {
+                alert("Va pa bosta")
+            }
+
+        }
+
+        function contaClick (){
+            clicks = clicks + 1
+            
+            if (clicks > 10){
+                alert("Voce chegou no limite")
+            } else {
+                alert("Voce clickou "+clicks)
+                
+            }
+        }
+
+        function procurarnolixo (){
+            dinheiro = dinheiro + 1
+        }
+
+
+
+
+    </script>
+
+</body>
+</html>
