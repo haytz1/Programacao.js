@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mingigos</title>
 </head>
-<body>
+<body style="background-color: red; color: white; " >
+
+    <a  href="./09_painel.html">Ir pro painel</a>
     
     <h1>Mindigos esfomeados</h1>
     <p>Voce tem 🤮<strong id="textodinheiro" >0</strong> lixo</p>
@@ -18,11 +20,12 @@
         <li>jatinho de lixo - <strong id="textojatinho">50000</strong><button onclick="jatinhoLixo()" >Comprar 🤮 </button></li>
     </ul>
 
+    <p>Faça login para ser promovido ao um mendingo luxuoso<button onclick="mendingoluxoso()" >Clique aqui</button></p>
 
     <script>
 
         let dinheiro = 0
-        let dinheiroPorClique = 1000
+        let dinheiroPorClique = 1
         let cacambapreco = 25
         let caminhaopreco = 1000
         let jatinhopreco = 50000
@@ -69,8 +72,26 @@
                 jatinhopreco += parseInt(jatinhopreco * 0.2)
                 document.getElementById("textojatinho").innerHTML = jatinhopreco
             }
+        }
+
+        function mendingoluxoso(){
+
+            if( localStorage.getItem("logado") == 1 ){
+                alert("Voce evoluiu para mindigo luxoso parabens 🤑🤑")
+                dinheiro += 200
+                document.getElementById("textodinheiro").innerHTML = dinheiro
+                
+
+            } else {
+                alert("Voce ainda nao evoluiu para mindigo luxuoso")
+            }
 
         }
+
+        //Nao permitri regastar 2x a recompensa
+        //nao pode romver o autenticado
+        // salva o dinheiro automatico no localstorage
+        // ao atualizar sair ou fechar o dinheiro fica salvo
 
     </script>
 

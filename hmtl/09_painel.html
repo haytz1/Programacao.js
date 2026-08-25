@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: red;color: white; " >
+    
+    <div id="login" style="display: block;  " >
+        <h1>Login</h1>
+        <form>
+            <p>Digite Seu Usuario</p>
+            <input id="userlogin" />
+            <p>Digite sua senha</p>
+            <input type="password" id="passwordlogin" />
+    
+            <br/><br/>
+    
+        </form>
+        <button onclick="autenticar()">Entrar</button>
+
+        <hr/>
+    </div>
+
+
+
+    <div id="paineladm" style="display: none;" >
+        <h1>Painel administrativo</h1>
+        <p>Voce esta logado como <strong>administrador</strong></p>
+
+        <button onclick="deslogar()" >Sair da conta </button>
+
+        <a href="./08_mindigosimulator.html" >Ir pro jogo</a>
+    </div>
+
+
+    <script>
+
+        verificalogado()
+
+        function autenticar(){
+
+            let usuario = document.getElementById("userlogin").value
+            let senha = document.getElementById("passwordlogin").value
+
+            if (usuario.trim().length < 3){       // trim corta os espaços
+                alert("Usuario incorreto. ")
+                return
+            }
+            if (senha.length == 0){
+                alert("Senha incorreta. ")
+                return
+            }
+            if (usuario != "administrador"){
+                alert("Usuario errado")
+                return
+            }
+            if (senha != "12345"){
+                alert("Senha errada")
+                return
+            }
+
+            localStorage.setItem("logado", 1 )
+
+
+            document.getElementById("paineladm").style.display = "block"
+            document.getElementById("login").style.display = "none"
+
+        }
+
+        function deslogar(){
+
+            localStorage.removeItem("logado")
+
+            document.getElementById("paineladm").style.display = "none"
+            document.getElementById("login").style.display = "block"
+        }
+
+        function verificalogado(){
+            
+            let logado = localStorage.getItem("logado")
+
+            if (logado == 1 ){
+        
+                document.getElementById("paineladm").style.display = "block"
+                document.getElementById("login").style.display = "none"
+
+            }
+        }
+
+
+
+    </script>
+
+</body>
+</html>
