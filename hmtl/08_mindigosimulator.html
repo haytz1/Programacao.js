@@ -24,11 +24,15 @@
 
     <script>
 
-        let dinheiro = 0
+        let dinheiro = Number(localStorage.getItem("dinheiro"))
         let dinheiroPorClique = 1
         let cacambapreco = 25
         let caminhaopreco = 1000
         let jatinhopreco = 50000
+
+        function dinheirosalvo(){
+            localStorage.setItem("dinheiro", dinheiro)
+        }
 
         function venderLixo(){
             dinheiro += dinheiroPorClique
@@ -76,11 +80,16 @@
 
         function mendingoluxoso(){
 
+            if (localStorage.getItem("recompensaResgatada") == "1") {
+                alert("Você já resgatou essa recompensa! 🤑")
+                return
+            }
+
             if( localStorage.getItem("logado") == 1 ){
                 alert("Voce evoluiu para mindigo luxoso parabens 🤑🤑")
                 dinheiro += 200
                 document.getElementById("textodinheiro").innerHTML = dinheiro
-                
+                localStorage.setItem("recompensaResgatada", "1")
 
             } else {
                 alert("Voce ainda nao evoluiu para mindigo luxuoso")
