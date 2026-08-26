@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crud</title>
+</head>
+<body>
+    
+    <h1>CRUD</h1>
+    <p>Create (Inserir)</p>
+    <p>Read (buscar)</p>
+    <p>Update (alterar)</p>
+    <p>Delete (remover)</p>
+
+    <hr/>
+
+    <input id="inputnomis" placeholder="Oin"  />
+    <button onclick="inserir()" >Tchau</button>
+
+    <ul id="listusers" >
+
+    </ul>
+
+    <script>
+
+        // Dados mockados
+
+        let nomes = ["Miguelito", "Ruanzito", "Carlitos", "Marquitos", "Conguitos"] // Array 
+
+
+        buscarTodos()
+
+        function buscarTodos(){
+            
+            let raparigo = ""
+            nomes.map( i => raparigo += "<li> "+i+"<button>🖊</button><button>🗑</button> </li>" )
+            document.getElementById("listusers").innerHTML = raparigo
+
+        }
+
+        function inserir(){
+
+            let nome = document.getElementById("inputnomis").value
+            nomes = nomes.concat(nome)
+            console.log(nomes)
+            
+            if (nome.trim().length < 3){
+                alert("Digite um nome valido")
+                return
+            }
+            buscarTodos()
+            document.getElementById("inputnomis").value = ""
+
+
+        }
+
+    </script>
+
+</body>
+</html>
