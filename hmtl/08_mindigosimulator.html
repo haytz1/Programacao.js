@@ -24,19 +24,24 @@
 
     <script>
 
-        let dinheiro = Number(localStorage.getItem("dinheiro"))
-        let dinheiroPorClique = 1
-        let cacambapreco = 25
-        let caminhaopreco = 1000
-        let jatinhopreco = 50000
+        let dinheiro = Number(localStorage.getItem("dinheiro")) || 0
+        let dinheiroPorClique = Number(localStorage.getItem("dinheiroPorClique")) || 1
+        let cacambapreco = Number(localStorage.getItem("cacambapreco")) || 25
+        let caminhaopreco = Number(localStorage.getItem("caminhaopreco")) || 1000
+        let jatinhopreco = Number(localStorage.getItem("jatinhopreco")) || 50000
 
-        function dinheirosalvo(){
+        function salvarjogo(){
             localStorage.setItem("dinheiro", dinheiro)
+            localStorage.setItem("dinheiroPorClique", dinheiroPorClique)
+            localStorage.setItem("cacambapreco", cacambapreco)
+            localStorage.setItem("caminhaopreco", caminhaopreco)
+            localStorage.setItem("jatinhopreco", jatinhoLixo)
         }
 
         function venderLixo(){
             dinheiro += dinheiroPorClique
             document.getElementById("textodinheiro").innerHTML = dinheiro
+            salvarjogo()
         }
 
         function cacambaLixo (){
@@ -49,6 +54,8 @@
                 document.getElementById("textodinheiro").innerHTML = dinheiro
                 cacambapreco += parseInt(cacambapreco * 0.2)
                 document.getElementById("textocacamba").innerHTML = cacambapreco
+
+                salvarjogo()
             }
         }
 
@@ -62,6 +69,8 @@
                 document.getElementById("textodinheiro").innerHTML = dinheiro
                 caminhaopreco += parseInt(caminhaopreco * 0.2)
                 document.getElementById("textocaminhao").innerHTML = caminhaopreco
+
+                salvarjogo()
             }
         }
 
@@ -75,6 +84,8 @@
                 document.getElementById("textodinheiro").innerHTML = dinheiro
                 jatinhopreco += parseInt(jatinhopreco * 0.2)
                 document.getElementById("textojatinho").innerHTML = jatinhopreco
+
+                salvarjogo()
             }
         }
 
@@ -96,6 +107,7 @@
             }
 
         }
+        
 
         //Nao permitri regastar 2x a recompensa
         //nao pode romver o autenticado
