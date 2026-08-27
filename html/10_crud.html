@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crud</title>
 </head>
-<body>
-    
+<body style="background-color: red;color: white;" >
+
     <h1>CRUD</h1>
     <p>Create (Inserir)</p>
     <p>Read (buscar)</p>
@@ -16,7 +16,8 @@
     <hr/>
 
     <input id="inputnomis" placeholder="Oin"  />
-    <button onclick="inserir()" >Tchau</button>
+    <button id="botaoSalvar" onclick="inserir()" >Tchau</button>
+    <button id="botaoAlterar" style="display: none;" onclick="salvarAlteracao()" >😴</button>
 
     <ul id="listusers" >
 
@@ -27,6 +28,7 @@
         // Dados mockados
 
         let nomes = ["Miguelito", "Ruanzito", "Carlitos", "Marquitos", "Conguitos"] // Array 
+        let posicaoalterada = 0
 
 
         buscarTodos()
@@ -34,24 +36,69 @@
         function buscarTodos(){
             
             let raparigo = ""
-            nomes.map( i => raparigo += "<li> "+i+"<button>🖊</button><button>🗑</button> </li>" )
+            nomes.map( i => raparigo += `<li> ${i}<button onclick='atualizar("${i}")' >🖊</button><button onclick='remover("${i}")' >🗑</button> </li>` )
             document.getElementById("listusers").innerHTML = raparigo
 
         }
 
-        function inserir(){
+        function atualizar(nome){
+            posicaoalterada = nomes.indexOf(nome)
+            document.getElementById("inputnomis").value = nome
 
+
+            document.getElementById("botaoSalvar").style.display = "none"
+            document.getElementById("botaoAlterar").style.display = "inline-block"
+
+        }
+
+        function salvarAlteracao(){
             let nome = document.getElementById("inputnomis").value
-            nomes = nomes.concat(nome)
-            console.log(nomes)
             
             if (nome.trim().length < 3){
                 alert("Digite um nome valido")
                 return
             }
+            
+            nomes[posicaoalterada] = nome
+
             buscarTodos()
             document.getElementById("inputnomis").value = ""
 
+            document.getElementById("botaoSalvar").style.display = "inline-block"
+            document.getElementById("botaoAlterar").style.display = "none"
+        }
+
+        function inserir(){
+
+            let nome = document.getElementById("inputnomis").value
+            
+            if (nome.trim().length < 3){
+                alert("Digite um nome valido")
+                return
+            }
+            
+            buscarTodos()
+        
+            document.getElementById("inputnomis").value = ""
+            
+            nomes = nomes.concat(nome)
+            console.log(nomes)
+
+        }
+
+        function remover(nome){
+
+            let resposta = confirm("Tem certeza?")
+
+            if (resposta == false ){
+                return
+            }
+
+            let posicaoremover = nomes.indexOf(nome)
+            nomes.splice(posicaoremover, 1)
+
+
+            buscarTodos()
 
         }
 
